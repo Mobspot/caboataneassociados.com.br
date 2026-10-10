@@ -1,0 +1,18 @@
+# Changelog
+
+## [Não publicado]
+
+### Alterado
+
+- site convertido de PHP com includes para cinco páginas HTML estáticas compatíveis com GitHub Pages;
+- navegação e recursos ajustados para o subcaminho temporário do repositório;
+- dependência pública do domínio suspenso substituída pelo ativo local;
+- deploy FTP automático substituído por validação contínua no GitHub.
+
+### Adicionado
+
+- bloqueio temporário de indexação, página 404, skip link, foco visível, redução de movimento, documentação e testes.
+
+### Removido
+
+- handlers e páginas PHP, arquivos de configuração da hospedagem legada e formulário sem backend.

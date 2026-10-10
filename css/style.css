@@ -49,15 +49,6 @@ a.none:hover {text-decoration: none;}
 
 @media screen and (max-width: 992px) {.navbar-toggle {display: block;}.navbar-collapse.collapse {display: none !important;}.main-navbar-nav.navbar-nav,.main-navbar-nav.navbar-nav > li {float: none !important;}.navbar-collapse.collapse.in {display: block !important;overflow-y: auto !important;}}
 
-/* Hero */
-.hero_area {background-image: url(../img/hero.svg);background-position: center center;background-repeat: no-repeat;background-size: cover;height: 575px;padding: 0;}
-.hero_content {padding: 40px 0;}
-.hero_content spam {font-size: 58px;}
-
-.btn-main {color: #eee; background-color: #fcb900; border-style: none; border-radius: 41px; border-width:1px; padding-top:10px; padding-bottom:10px; padding-left:40px; padding-right:40px; margin-top:450px; font-size:20px; box-shadow:none; text-decoration:none; cursor:pointer; display: inline-block; text-align: center; transition:.2s linear;}
-
-.btn-main:hover {background-color: #ff6900}
-
 /* Boxes */
 .boxes_area {padding-top: 40px;padding-bottom: 10px;padding-left: 0;padding-right: 0;background-color: #f8f8f8;}
 .box {position: relative;}
@@ -174,7 +165,6 @@ ul.big li:nth-child(2n) {margin-left: 2%;}
 
 /* Responsive */
 @media screen and (max-width:462px) {
-	.hero_area {background-image: url(../img/hero2.svg);background-position: center center;background-repeat: no-repeat;background-size: cover;height: 575px;padding: 0;}
 
     .top {text-align: center;}.top ul.list-inline{float: none !important;text-align: center;}
     .hero_content {padding: 40px 0;}

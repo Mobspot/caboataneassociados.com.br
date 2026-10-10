@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Site temporário. A indexação será liberada após a definição do domínio canônico.
