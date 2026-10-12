@@ -10,6 +10,9 @@ Site institucional estático administrado pelo Tesseract.
 - indexação: bloqueada intencionalmente por `robots.txt` e meta `noindex` até a validação factual do conteúdo profissional;
 - backend: inexistente; contato somente por links diretos já publicados;
 - analytics: a tag legada `G-ZNMTXCQML2` foi preservada, mas acesso e titularidade ainda precisam de auditoria.
+- conteúdo institucional: revisado a partir de fatos fornecidos pelo cliente; vínculo com a AFTAL validado nas páginas oficiais;
+- imagem pessoal: não publicada por decisão expressa; novo e-mail permanece pendente e não foi inventado.
+- identidade visual: modernizada sobre a paleta, o logotipo e as imagens históricas do site, sem dependência de imagens geradas.
 
 ## Validação local
 

@@ -136,6 +136,27 @@ class SiteTests(unittest.TestCase):
             text = page.read_text(encoding="utf-8")
             self.assertIn("G-ZNMTXCQML2", text, page)
 
+    def test_authorized_institutional_content_and_aftal_links(self) -> None:
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        about = (ROOT / "quemsomos.html").read_text(encoding="utf-8")
+        combined = home + about
+        self.assertIn("mais de 30 anos", combined)
+        self.assertIn("https://aftal-gsp.com/miembros-en-brasil/", home)
+        self.assertIn("https://aftal-gsp.com/paises-miembros/", home)
+        self.assertIn("https://aftal-gsp.com/miembros-en-brasil/", about)
+        self.assertIn("https://aftal-gsp.com/paises-miembros/", about)
+        self.assertNotRegex(combined, r"(?i)15\s+pa[ií]ses")
+        self.assertNotIn("reginaldo.jpg", combined)
+        self.assertFalse((ROOT / "img" / "reginaldo.jpg").exists())
+
+    def test_modern_visual_layer_preserves_brand_and_responsiveness(self) -> None:
+        css = (ROOT / "css" / "operational.css").read_text(encoding="utf-8")
+        self.assertIn("--brand-blue: #005fa6", css)
+        self.assertIn("--brand-gold: #f2a900", css)
+        self.assertIn("overflow-x: hidden", css)
+        self.assertIn("@media (max-width: 767px)", css)
+        self.assertIn(".navbar-default .navbar-collapse.collapse.in", css)
+
     def test_no_obvious_secret_formats(self) -> None:
         patterns = [
             re.compile(r"AKIA[0-9A-Z]{16}"),
