@@ -9,6 +9,8 @@
 - apresentação institucional revisada para refletir atuação nacional, mais de 30 anos de experiência profissional e credenciais fornecidas pelo cliente;
 - parceria AFTAL ganhou bloco visível com referências oficiais, sem fixar contagem divergente de países;
 - identidade visual modernizada com nova hierarquia tipográfica, navegação, cards, áreas institucionais e rodapé responsivos, preservando paleta, logotipo, banner e imagens setoriais;
+- cartões de compartilhamento social configurados para exibir o banner principal no WhatsApp e em clientes compatíveis com Open Graph;
+- faixa de referências corrigida para exibir vários ícones em movimento contínuo, com pausa por interação e alternativa sem animação;
 - site convertido de PHP com includes para cinco páginas HTML estáticas compatíveis com GitHub Pages;
 - navegação e recursos ajustados para o subcaminho temporário do repositório;
 - dependência pública do domínio suspenso substituída pelo ativo local;

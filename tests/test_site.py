@@ -94,6 +94,46 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(len(PAGES), len(titles))
         self.assertEqual(len(PAGES), len(descriptions))
 
+    def test_social_previews_use_public_banner(self) -> None:
+        expected_image = "https://caboataneassociados.com.br/img/banner-1.jpg?v=20261012"
+        expected_urls = {
+            "index.html": "https://caboataneassociados.com.br/",
+            "servicos.html": "https://caboataneassociados.com.br/servicos.html",
+            "quemsomos.html": "https://caboataneassociados.com.br/quemsomos.html",
+            "clientes.html": "https://caboataneassociados.com.br/clientes.html",
+            "contato.html": "https://caboataneassociados.com.br/contato.html",
+            "404.html": "https://caboataneassociados.com.br/",
+        }
+        self.assertTrue((ROOT / "img" / "banner-1.jpg").exists())
+        for page in PAGES + [ROOT / "404.html"]:
+            _, parser = parse(page)
+            meta = {
+                attrs.get("property") or attrs.get("name"): attrs.get("content")
+                for tag, attrs in parser.attrs
+                if tag == "meta" and (attrs.get("property") or attrs.get("name"))
+            }
+            self.assertEqual("website", meta.get("og:type"), page)
+            self.assertEqual(expected_urls[page.name], meta.get("og:url"), page)
+            self.assertEqual(expected_image, meta.get("og:image"), page)
+            self.assertEqual(expected_image, meta.get("og:image:secure_url"), page)
+            self.assertEqual("1920", meta.get("og:image:width"), page)
+            self.assertEqual("1080", meta.get("og:image:height"), page)
+            self.assertTrue(meta.get("og:image:alt"), page)
+            self.assertEqual("summary_large_image", meta.get("twitter:card"), page)
+
+    def test_reference_carousel_is_continuous_and_has_fallback(self) -> None:
+        for name in ("index.html", "servicos.html", "quemsomos.html", "clientes.html"):
+            text = (ROOT / name).read_text(encoding="utf-8")
+            self.assertIn('class="carousel reference-carousel"', text, name)
+            self.assertIn('data-ride="false"', text, name)
+            for image in range(1, 7):
+                self.assertEqual(2, text.count(f'img/a{image}.jpg'), f"{name}: a{image}")
+        css = (ROOT / "css" / "operational.css").read_text(encoding="utf-8")
+        self.assertIn("@keyframes reference-scroll", css)
+        self.assertIn("animation: reference-scroll 30s linear infinite", css)
+        self.assertIn("animation-play-state: paused", css)
+        self.assertIn("@media (prefers-reduced-motion: reduce)", css)
+
     def test_accessibility_baseline(self) -> None:
         for page in PAGES:
             text, parser = parse(page)
