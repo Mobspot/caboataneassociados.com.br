@@ -11,6 +11,7 @@
 - identidade visual modernizada com nova hierarquia tipográfica, navegação, cards, áreas institucionais e rodapé responsivos, preservando paleta, logotipo, banner e imagens setoriais;
 - cartões de compartilhamento social configurados para exibir o banner principal no WhatsApp e em clientes compatíveis com Open Graph;
 - faixa de referências corrigida para exibir vários ícones em movimento contínuo, com pausa por interação e alternativa sem animação;
+- página de clientes refeita em largura total, com navegação por segmentos, imagens maiores, tabelas mais legíveis e empilhamento adequado no celular;
 - site convertido de PHP com includes para cinco páginas HTML estáticas compatíveis com GitHub Pages;
 - navegação e recursos ajustados para o subcaminho temporário do repositório;
 - dependência pública do domínio suspenso substituída pelo ativo local;

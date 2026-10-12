@@ -95,7 +95,7 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(len(PAGES), len(descriptions))
 
     def test_social_previews_use_public_banner(self) -> None:
-        expected_image = "https://caboataneassociados.com.br/img/banner-1.jpg?v=20261012"
+        expected_image = "https://caboataneassociados.com.br/img/banner-1.jpg?v=20261012-2"
         expected_urls = {
             "index.html": "https://caboataneassociados.com.br/",
             "servicos.html": "https://caboataneassociados.com.br/servicos.html",
@@ -133,6 +133,19 @@ class SiteTests(unittest.TestCase):
         self.assertIn("animation: reference-scroll 30s linear infinite", css)
         self.assertIn("animation-play-state: paused", css)
         self.assertIn("@media (prefers-reduced-motion: reduce)", css)
+
+    def test_client_showcase_uses_large_images_and_unique_sections(self) -> None:
+        text = (ROOT / "clientes.html").read_text(encoding="utf-8")
+        _, parser = parse(ROOT / "clientes.html")
+        ids = [attrs["id"] for _, attrs in parser.attrs if attrs.get("id")]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertNotIn('alt="Post"', text)
+        for section in ("industrias", "comercio", "servicos", "planosaude", "sorteios", "oss", "religiosas", "semlucro"):
+            self.assertIn(f'id="{section}"', text)
+            self.assertIn(f'href="#{section}"', text)
+        css = (ROOT / "css" / "operational.css").read_text(encoding="utf-8")
+        self.assertIn("grid-template-columns: minmax(30rem, 36rem) minmax(0, 1fr)", css)
+        self.assertIn("min-height: 32rem", css)
 
     def test_accessibility_baseline(self) -> None:
         for page in PAGES:
