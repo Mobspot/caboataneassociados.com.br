@@ -60,12 +60,15 @@ class SiteTests(unittest.TestCase):
             self.assertNotRegex(text, r"\.php(?:[?#\"'])", page)
             self.assertNotIn("<form", text.lower(), page)
 
-    def test_temporary_indexing_is_blocked(self) -> None:
+    def test_domain_is_declared_and_indexing_remains_blocked(self) -> None:
         robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
         self.assertRegex(robots, r"(?im)^User-agent:\s*\*$")
         self.assertRegex(robots, r"(?im)^Disallow:\s*/$")
         self.assertFalse((ROOT / "sitemap.xml").exists())
-        self.assertFalse((ROOT / "CNAME").exists())
+        self.assertEqual(
+            "caboataneassociados.com.br",
+            (ROOT / "CNAME").read_text(encoding="utf-8").strip(),
+        )
         for page in PAGES + [ROOT / "404.html"]:
             text = page.read_text(encoding="utf-8")
             self.assertRegex(text, r'<meta name="robots" content="noindex, nofollow">')
