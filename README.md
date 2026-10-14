@@ -5,6 +5,7 @@ Site institucional estático administrado pelo Tesseract.
 ## Estado atual
 
 - URL oficial: `https://caboataneassociados.com.br/`;
+- telefone e WhatsApp oficial: `+55 (11) 91157-0039`, atualizado por autorização de Sidney em 2026-10-14;
 - hospedagem: GitHub Pages, branch `main`, diretório `/`;
 - domínio definitivo: `caboataneassociados.com.br`, aprovado por Sidney em 2026-10-12;
 - indexação: bloqueada intencionalmente por `robots.txt` e meta `noindex` até a validação factual do conteúdo profissional;

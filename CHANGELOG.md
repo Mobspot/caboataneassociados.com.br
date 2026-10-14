@@ -4,6 +4,7 @@
 
 ### Alterado
 
+- telefone celular e todos os links de WhatsApp atualizados para `+55 (11) 91157-0039` nas cinco páginas públicas;
 - domínio oficial definido como `caboataneassociados.com.br`, com caminhos da página 404 adaptados à raiz;
 - documentação operacional separa disponibilidade do domínio e liberação futura da indexação;
 - apresentação institucional revisada para refletir atuação nacional, mais de 30 anos de experiência profissional e credenciais fornecidas pelo cliente;

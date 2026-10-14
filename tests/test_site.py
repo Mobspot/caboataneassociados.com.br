@@ -189,6 +189,16 @@ class SiteTests(unittest.TestCase):
             text = page.read_text(encoding="utf-8")
             self.assertIn("G-ZNMTXCQML2", text, page)
 
+    def test_contact_phone_and_whatsapp_are_current(self) -> None:
+        for page in PAGES:
+            text = page.read_text(encoding="utf-8")
+            self.assertIn("tel:+5511911570039", text, page)
+            self.assertIn("(11) 91157-0039", text, page)
+            self.assertIn("phone=5511911570039", text, page)
+            self.assertNotIn("11997329573", text, page)
+            self.assertNotIn("5511997329573", text, page)
+            self.assertNotIn("99732-9573", text, page)
+
     def test_authorized_institutional_content_and_aftal_links(self) -> None:
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         about = (ROOT / "quemsomos.html").read_text(encoding="utf-8")
